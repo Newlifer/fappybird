@@ -3,7 +3,13 @@
 Postal addresses syntactic parser designed for high perfomance.
 
 # Build and install
+## Requirements
+1. c++14 compatible compiler
+2. ...
 
+## How to build:
+    $ cmake ..
+    $ make
 
 # License
 
