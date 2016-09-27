@@ -1,4 +1,4 @@
-# FAPPYBIRD
+# FAPPYBIRD [![Build Status](https://travis-ci.org/Newlifer/fappybird.svg?branch=master)](https://travis-ci.org/Newlifer/fappybird)
 
 Postal addresses syntactic parser designed for high perfomance.
 
