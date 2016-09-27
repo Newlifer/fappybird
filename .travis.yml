@@ -5,5 +5,5 @@ compiler:
    - gcc
    - clang
 script:
-   - cmake
+   - cmake .
    - make
