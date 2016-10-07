@@ -5,6 +5,7 @@ project(fappybird)
 set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -O2 -Wall -Wextra -pedantic -std=c++1y")
 
 set(SOURCES
+        "src/main.cpp"
     )
 
 set(HEADERS
@@ -14,5 +15,5 @@ set(HEADERS
 include_directories("3rdparty/pugixml/src/")
 add_subdirectory("3rdparty/pugixml/")
 
-add_executable(fappybird "src/main.cpp" ${SOURCES} ${HEADERS})
+add_executable(fappybird ${SOURCES} ${HEADERS})
 target_link_libraries(fappybird pugixml)
