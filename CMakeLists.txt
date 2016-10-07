@@ -9,7 +9,7 @@ set(SOURCES
     )
 
 set(HEADERS
-        "includes/fixed_string.hpp"
+        "include/fixed_string.hpp"
     )
 
 include_directories("3rdparty/pugixml/src/")
