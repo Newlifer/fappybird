@@ -2,12 +2,13 @@ cmake_minimum_required(VERSION 3.2.2)
 
 project(fappybird)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -O2 -Wall -Wextra -pedantic -std=c++14")
+set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -O2 -Wall -Wextra -pedantic -std=c++1y")
 
 set(SOURCES
     )
 
 set(HEADERS
+        "includes/fixed_string.hpp"
     )
 
 include_directories("3rdparty/pugixml/src/")
