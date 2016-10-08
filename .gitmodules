@@ -3,6 +3,4 @@
 	url = https://github.com/zeux/pugixml.git
 [submodule "3rdparty/Catch"]
 	path = 3rdparty/Catch
-	url = git@github.com:philsquared/Catch.git
-[submodule "Catch"]
-	url = =
+	url = https://github.com/philsquared/Catch.git
