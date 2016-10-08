@@ -26,6 +26,7 @@ namespace fappy {
 
                 public:
                 basic_fixed_string()
+                  : length_(0)
                 {
                         std::memset(chars_, 0, Size);
                 }
@@ -40,8 +41,8 @@ namespace fappy {
                  */
                 basic_fixed_string(const variable_len_string& other)
                 {
-                        length_ = std::min(Size, other.size());
-                        std::memcpy(chars_, other.data(), sizeof(chart_type) * length_);
+                        const auto size = std::min(Size, other.size());
+                        this->copy(size, other.data());
                 }
 
                 basic_fixed_string(const basic_fixed_string& other)
@@ -57,6 +58,16 @@ namespace fappy {
                 {
                         if (other != *this) {
                                 copy(other.size(), other.chars_);
+                                return *this;
+                        } else {
+                                return *this;
+                        }
+                }
+
+                basic_fixed_string& operator=(const chart_type* other)
+                {
+                        if (!(*this == other)) {
+                                copy(std::min(std::strlen(other), max_size()), other);
                                 return *this;
                         } else {
                                 return *this;
@@ -102,10 +113,17 @@ namespace fappy {
                         return ret;
                 }
 
+                variable_len_string as_std_string() const
+                {
+                        return variable_len_string(chars_, chars_ + length_);
+                }
+
                 bool operator==(const chart_type* other) const
                 {
-                        const auto len__ = std::min(this->length_, std::strlen(other));
-                        return std::memcmp(chars_, other, len__) == 0;
+                        if (std::strlen(other) != this->length_)
+                                return false;
+                        else
+                                return std::memcmp(chars_, other, length_) == 0;
                 }
 
                 bool operator==(const basic_fixed_string& other) const
@@ -118,10 +136,13 @@ namespace fappy {
                         return !(other == this->chars_);
                 }
 
+                template <class CharT_, std::size_t Size_>
+                friend std::ostream& operator<<(std::ostream& stream, const basic_fixed_string<CharT_, Size_>& str);
+
                 private:
                 void copy(const std::size_t size, const chart_type* chars)
                 {
-                        length_ = size;
+                        this->length_ = size;
                         std::memcpy(this->chars_, chars, sizeof(chart_type) * this->length_);
                 }
 
@@ -133,4 +154,11 @@ namespace fappy {
          */
         template <std::size_t Size>
         using fixed_string_char = basic_fixed_string<char, Size>;
+
+        template <typename CharT, std::size_t Size>
+        std::ostream& operator<<(std::ostream& stream, const basic_fixed_string<CharT, Size>& str)
+        {
+                stream << str.chars_;
+                return stream;
+        }
 }
