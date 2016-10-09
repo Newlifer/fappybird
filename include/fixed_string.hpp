@@ -14,6 +14,12 @@ namespace fappy {
                 }
         };
 
+        template <typename CharT>
+        inline bool is_space(const CharT c)
+        {
+                return c == ' ';
+        }
+
         /*! \brief Fixed length basic string class.
          * \tparam CharT Char type.
          * \tparam Size Size of string.
@@ -134,6 +140,41 @@ namespace fappy {
                 bool operator!=(const basic_fixed_string& other) const
                 {
                         return !(other == this->chars_);
+                }
+
+                void strip_left()
+                {
+                        std::size_t i = 0;
+                        for (; i < this->size(); ++i)
+                                if (!is_space(this->chars_[i]))
+                                        break;
+                        if (i <= this->size())
+                                this->shift_left(i);
+                }
+
+                void strip_right()
+                {
+                        std::size_t i = this->size() - 1;
+                        for (; i > 0; i--)
+                                if (!is_space(this->chars_[i]))
+                                        break;
+                        this->length_ = i + 1;
+                        std::memset(this->chars_ + this->size(), 0,
+                                    sizeof(chart_type) * this->max_size() - this->size());
+                }
+
+                void trim()
+                {
+                        this->strip_left();
+                        this->strip_right();
+                }
+
+                void shift_left(const std::size_t val)
+                {
+                        for (std::size_t i            = val; i < this->size(); ++i)
+                                this->chars_[i - val] = this->chars_[i];
+                        this->length_                 = this->size() - val;
+                        std::memset(this->chars_ + this->size(), 0, sizeof(chart_type) * this->size());
                 }
 
                 template <class CharT_, std::size_t Size_>

@@ -31,4 +31,25 @@ TEST_CASE("fixed string test", "[basic_fixed_string]")
                 REQUIRE(str.size() == str.max_size());
                 REQUIRE(str.as_std_string() == std::string(str__, str__ + 10));
         }
+        SECTION("strip left")
+        {
+                const char* str__ = "   gsomix";
+                str               = str__;
+                str.strip_left();
+                REQUIRE(str.as_std_string() == std::string("gsomix"));
+        }
+        SECTION("strip right")
+        {
+                const char* str__ = "gsomix   ";
+                str               = str__;
+                str.strip_right();
+                REQUIRE(str.as_std_string() == std::string("gsomix"));
+        }
+        SECTION("trim")
+        {
+                const char* str__ = "  gsomix  ";
+                str               = str__;
+                str.trim();
+                REQUIRE(str.as_std_string() == std::string("gsomix"));
+        }
 }
