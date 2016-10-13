@@ -56,7 +56,7 @@ TEST_CASE("fixed string test", "[basic_fixed_string]")
 
         SECTION("tokenaizer test")
         {
-                auto tokens = tokenaizer("Gsomix street.").tokens();
+                auto tokens = tokenaizer<std::string>("Gsomix street.").tokens();
                 (void)tokens;
         }
 }
