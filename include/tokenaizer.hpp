@@ -68,7 +68,7 @@ namespace fappy {
                                 if(is_space(str_[i]))
                                         continue;
                                 else
-                                        ret.emplace_back("ololo");
+                                        ret.emplace_back("ololo", TOKEN_TYPE.none);
                         }
                         return ret;
                 }
