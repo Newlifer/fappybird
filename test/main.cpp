@@ -56,7 +56,7 @@ TEST_CASE("fixed string test", "[basic_fixed_string]")
 
         SECTION("tokenaizer test")
         {
-                tokenaizer tok("Gsomix street.");
-                const auto& tokens = tok.tokens();
+                auto tokens = tokenaizer("Gsomix street.").tokens();
+                (void)tokens;
         }
 }
