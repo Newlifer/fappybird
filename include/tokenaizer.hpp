@@ -34,6 +34,7 @@ namespace fappy {
 
                 private:
                 string_type_t str_;
+                TOKEN_TYPE tt_;
         };
 
         template <typename StringType>
