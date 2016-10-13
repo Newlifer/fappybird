@@ -10,6 +10,8 @@ set(SOURCES
 
 set(HEADERS
         "../include/fixed_string.hpp"
+        "../include/string_utils.hpp"
+        "../include/tokenaizer.hpp"
     )
 
 #include_directories("../3rdparty/pugixml/src/")

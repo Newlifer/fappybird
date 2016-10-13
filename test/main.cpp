@@ -5,6 +5,7 @@
 #include <string>
 
 #include "../include/fixed_string.hpp"
+#include "../include/tokenaizer.hpp"
 
 TEST_CASE("fixed string test", "[basic_fixed_string]")
 {
@@ -51,5 +52,11 @@ TEST_CASE("fixed string test", "[basic_fixed_string]")
                 str               = str__;
                 str.trim();
                 REQUIRE(str.as_std_string() == std::string("gsomix"));
+        }
+
+        SECTION("tokenaizer test")
+        {
+                tokenaizer tok("Gsomix street.");
+                const auto& tokens = tok.tokens();
         }
 }

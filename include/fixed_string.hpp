@@ -4,6 +4,8 @@
 #include <stdexcept>
 #include <string>
 
+#include "string_utils.hpp"
+
 namespace fappy {
         class fixed_string_lenth_exception : public std::runtime_error
         {
@@ -13,12 +15,6 @@ namespace fappy {
                 {
                 }
         };
-
-        template <typename CharT>
-        inline bool is_space(const CharT c)
-        {
-                return c == ' ';
-        }
 
         /*! \brief Fixed length basic string class.
          * \tparam CharT Char type.
