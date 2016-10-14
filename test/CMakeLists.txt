@@ -10,6 +10,7 @@ set(SOURCES
 
 set(HEADERS
         "../include/fixed_string.hpp"
+        "../include/chars_utils.hpp"
     )
 
 #include_directories("../3rdparty/pugixml/src/")
