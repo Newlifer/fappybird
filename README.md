@@ -7,9 +7,23 @@ Postal addresses syntactic parser designed for high perfomance.
 1. c++14 compatible compiler
 2. ...
 
+## Dependencies
+1. [pugixml](https://github.com/zeux/pugixml), for reading xml data (added in repo as submodule);
+2. [Catch](https://github.com/philsquared/Catch), for testing (added in repo as submodule).
+
 ## How to build:
+    $ mkdir build
+    $ cd build
     $ cmake ..
     $ make
+
+
+## How to build and run tests:
+    $ mkdir testbuild
+    $ cd testbuild
+    $ cmake ../test
+    $ make
+    $ ./fappybird
 
 # License
 
