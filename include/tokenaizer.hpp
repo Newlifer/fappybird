@@ -64,6 +64,7 @@ namespace fappy {
                 std::vector<token<string_type_t>> tokens() const
                 {
                         std::vector<token<string_type_t>> ret;
+                        std::size_t last_pos = 0u;
                         for (std::size_t i = 0; i < str_.size(); ++i) {
                                 if(is_space(str_[i]))
                                         continue;
