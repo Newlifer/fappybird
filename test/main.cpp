@@ -56,9 +56,9 @@ TEST_CASE("fixed string test", "[basic_fixed_string]")
 
         SECTION("tokenaizer test")
         {
-                tokenaizer<std::string>("Gsomix street.") tk;
+                tokenaizer<std::string> tk("Gsomix street.");
                 tk.tokenize();
-                auto toks = tok.tokens();
-                (void)tokens;
+                auto toks = tk.tokens();
+                (void)toks;
         }
 }
