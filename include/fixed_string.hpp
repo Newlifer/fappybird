@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <string>
 
-#include "chars_utils.hpp"
+#include "string_utils.hpp"
 
 namespace fappy {
         class fixed_string_length_exception : public std::runtime_error
