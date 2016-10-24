@@ -17,13 +17,13 @@ namespace fappy {
                 public:
                 token() = delete;
 
-                explicit token(const string_type_t& str, TOKEN_TYPE tt)
+                token(const string_type_t& str, TOKEN_TYPE tt)
                   : str_(str)
                   , tt_(tt)
                 {
                 }
 
-                explicit token(string_type_t&& str, TOKEN_TYPE tt)
+                token(string_type_t&& str, TOKEN_TYPE tt)
                   : str_(std::move(str))
                   , tt_(tt)
                 {
@@ -41,6 +41,7 @@ namespace fappy {
         class tokenaizer
         {
                 using string_type_t = StringType;
+                using string_vec_t = std::vector<token<string_type_t>>;
 
                 public:
                 tokenaizer() = delete;
@@ -53,7 +54,7 @@ namespace fappy {
                 {
                 }
 
-                tokenaizer(const tokenaizer&)
+                explicit tokenaizer(const tokenaizer&)
                 {
                 }
 
@@ -61,7 +62,7 @@ namespace fappy {
                 {
                 }
 
-                std::vector<token<string_type_t>> tokens() const
+                string_vec_t make_tokens() const
                 {
                         std::vector<token<string_type_t>> ret;
                         std::size_t last_pos = 0u;
@@ -73,8 +74,24 @@ namespace fappy {
                         }
                         return ret;
                 }
+                
+                void tokenize()
+                {
+                    this->tokens_ = this->make_tokens();
+                }
+                
+                const string_vec_t& tokens() const
+                {
+                    return this->tokens_;
+                }
+                
+                string_vec_t& tokens()
+                {
+                    return this->tokens_;
+                }
 
                 private:
                 string_type_t str_;
+                string_vec_t tokens_;
         };
 }
