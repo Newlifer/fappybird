@@ -10,7 +10,7 @@ set(SOURCES
 
 set(HEADERS
         "../include/fixed_string.hpp"
-        "../include/string_utils.hpp"
+        "../include/chars_utils.hpp"
         "../include/tokenaizer.hpp"
     )
 

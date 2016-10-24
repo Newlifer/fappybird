@@ -4,13 +4,13 @@
 #include <stdexcept>
 #include <string>
 
-#include "string_utils.hpp"
+#include "chars_utils.hpp"
 
 namespace fappy {
-        class fixed_string_lenth_exception : public std::runtime_error
+        class fixed_string_length_exception : public std::runtime_error
         {
                 public:
-                fixed_string_lenth_exception(const char* msg)
+                fixed_string_length_exception(const char* msg)
                   : std::runtime_error(msg)
                 {
                 }
@@ -108,7 +108,7 @@ namespace fappy {
                 variable_len_string substr(std::size_t start, std::size_t len) const
                 {
                         if (start >= this->length_)
-                                throw fixed_string_lenth_exception(
+                                throw fixed_string_length_exception(
                                   "Cannot get substring from start position that more than string lenth!");
                         const auto len__ = std::min(this->length_ - start, len + 1);
                         variable_len_string ret(chars_ + start, chars_ + (start + len__));
@@ -138,7 +138,9 @@ namespace fappy {
                         return !(other == this->chars_);
                 }
 
-                void strip_left()
+                /*! \brief Strips all whitespaces from left.
+                 */
+                inline void strip_left()
                 {
                         std::size_t i = 0;
                         for (; i < this->size(); ++i)
@@ -148,7 +150,9 @@ namespace fappy {
                                 this->shift_left(i);
                 }
 
-                void strip_right()
+                /*! \brief Strips all whitespaces from right.
+                 */
+                inline void strip_right()
                 {
                         std::size_t i = this->size() - 1;
                         for (; i > 0; i--)
@@ -159,6 +163,8 @@ namespace fappy {
                                     sizeof(chart_type) * this->max_size() - this->size());
                 }
 
+                /*! \brief Strips all whitespaces from right and left.
+                 */
                 void trim()
                 {
                         this->strip_left();

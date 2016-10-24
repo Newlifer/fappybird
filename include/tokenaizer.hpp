@@ -1,6 +1,6 @@
 #pragma once
 
-#include "string_utils.hpp"
+#include "chars_utils.hpp"
 
 namespace fappy {
 
